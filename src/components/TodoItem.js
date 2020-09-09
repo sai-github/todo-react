@@ -19,6 +19,16 @@ class TodoItem extends React.Component {
       margin: "0.5rem",
     };
 
+    const completedStyle = {
+      fontStyle: "italic",
+      color: "#cdcdcd",
+      textDecoration: "line-through",
+    };
+
+    const finalTextStyles = this.props.taskItem.status
+      ? { ...textStyle, ...completedStyle }
+      : textStyle;
+
     return (
       <div style={containerStyle}>
         <input
@@ -28,7 +38,7 @@ class TodoItem extends React.Component {
             this.props.handleChange(this.props.taskItem.id);
           }}
         />
-        <p style={textStyle}>{this.props.taskItem.task}</p>
+        <p style={finalTextStyles}>{this.props.taskItem.task}</p>
       </div>
     );
   }
